@@ -23,27 +23,33 @@ export default async function BlogPage( { searchParams }: BlogPageProps ) {
     );
 
     return (
-        <div className="container max-w-4xl px-4 py-6 lg:py-10">
-            <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-                <div className="flex-1 space-y-4">
-                    <h1 className="inline-block font-black text-4xl lg:text-5xl">
-                        Blog
-                    </h1>
-                    <p className="text-xl text-muted-foreground">
-                        Data Science, Machine Learning, and AI
-                    </p>
+        <section className="py-6 lg:py-10">
+            <div className="container flex h-full max-w-screen-2xl items-center justify-center">
+                <div className="flex max-w-4xl w-full flex-col space-y-4 px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col items-start gap-2 md:flex-row md:justify-between md:gap-8">
+                        <div className="flex-1 space-y-2">
+                            <h1 className="inline-block font-bold text-4xl lg:text-5xl">
+                                Blog
+                            </h1>
+                            <p className="text-xl text-muted-foreground">
+                                Data Science, Machine Learning, and AI
+                            </p>
+                        </div>
+                    </div>
+                    <hr className="mt-4" />
+                    {displayPosts?.length > 0 ? (
+                        <ul className="flex flex-col">
+                            {displayPosts.map(post => {
+                                const {slug, date, title, description} = post;
+                                return <li key={slug}>
+                                    <PostItem slug={slug} title={title} description={description} date={date} />
+                                </li>
+                            })}
+                        </ul>
+                    ) : <p>Nothing to see here yet</p>}
+                    <QueryPagination totalPages={totalPages} className="justify-end mt-4"/>
                 </div>
             </div>
-            <hr className="mt-8" />
-            {displayPosts?.length > 0 ? (<ul className="flex flex-col">
-                {displayPosts.map(post => {
-                    const {slug, date, title, description} = post;
-                    return <li key={slug}>
-                        <PostItem slug={slug} title={title} description={description} date={date} />
-                    </li>
-                })}
-            </ul>) : <p>Nothing to see here yet</p>}
-            <QueryPagination totalPages={totalPages} className=" justify-end mt-4"/>
-        </div>
+        </section>
     )
 }

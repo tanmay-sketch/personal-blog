@@ -5,13 +5,14 @@ import { Metadata } from "next";
 import { siteConfig } from "../../../../config/site";
 
 interface PostPageProps {
-    params: {
+    params: Promise<{
         slug: string[];
-    };
+    }>;
 }
 
 async function getPostFromParams(params: PostPageProps["params"]) {
-    const slug = (await params)?.slug?.join("/");
+    const resolvedParams = await params;
+    const slug = resolvedParams.slug.join("/");
     return posts.find((post) => post.slugAsParams === slug);
 }
 
@@ -57,7 +58,7 @@ export async function generateMetadata({params}: PostPageProps) : Promise<Metada
     }
 }
 
-export async function generateStaticParams(): Promise<PostPageProps["params"][]> {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
     return posts.map((post) => ({
         slug: post.slugAsParams.split("/"),
     }))

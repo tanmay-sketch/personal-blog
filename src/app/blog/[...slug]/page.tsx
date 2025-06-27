@@ -70,13 +70,14 @@ export default async function PostPage({params}: PostPageProps) {
     }
 
     return (
-        <article className="container px-4 py-6 prose dark:prose-invert max-w-3xl mx-auto">
-            <h1 className="mb-2">
+        <article className="container px-4 pt-10 pb-6 prose dark:prose-invert max-w-3xl mx-auto [&>hr]:my-6 [&>hr]:border-border">
+            <h1 className="mb-4">
                 {post.title}
             </h1>
-            {post.description ? (<p className="text-xl mt-0 text-muted-foreground">{post.description}</p>) : null}
-            <hr className="my-4" />
-            <div className="mdx-scope">
+            {post.description ? (<p className="text-xl mt-0 mb-0 text-muted-foreground">{post.description}</p>) : null}
+            <hr />
+            {/* This is a hack to hide the first h1 tag in case of duplicate titles and add margin to all other elements*/}
+            <div className="mdx-scope [&>h1:first-child]:hidden [&>*]:my-6">
                 <MDXContent code={post.body}/>
             </div>
         </article>

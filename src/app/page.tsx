@@ -14,7 +14,7 @@ export default function Home() {
             <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-7xl font-bold text-balance">
               Welcome to my blog!
             </h1>
-            <p className="max-w-[42rem] text-muted-foreground sm:text-xl text-balance">
+            <p className="max-w-[50rem] text-muted-foreground sm:text-xl text-balance">
               I&apos;m Tanmay, I like to write about data science, sports, and other random stuff.
             </p>
             <div className="flex flex-col gap-4 justify-center sm:flex-row">

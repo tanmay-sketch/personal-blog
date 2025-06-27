@@ -1,6 +1,7 @@
 import * as runtime from "react/jsx-runtime";
 import Image from "next/image";
 import { Callout } from "./callout";
+import { Math, MathBlock } from "./math";
 
 const useMDXComponent = (code: string) => {
     const fn = new Function(code);
@@ -9,6 +10,8 @@ const useMDXComponent = (code: string) => {
 
 const components = {
     Callout,
+    Math,
+    MathBlock,
     // Add custom img component for markdown image syntax
     img: ({src, alt}: {src: string; alt?: string}) => (
         <Image 

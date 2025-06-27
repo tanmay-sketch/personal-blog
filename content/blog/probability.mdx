@@ -1,0 +1,114 @@
+---
+title: Conditional Probability and Bayes' Theorem
+description: A blog post introducing conditional probability and the Bayes' Theorem
+date: 2025-06-27
+published: true
+---
+
+Probability is a crucial skill in Data Science, Quantitative Finance, Artificial Intelligence, and any field involving numbers.
+This is the start of a series of posts about probability. 
+
+We know that probability is a measure of the likelihood of an event occurring. In simple terms, probability is defined as: 
+
+<MathBlock>{"P(A) = \\frac{n(A)}{n(S)}"}</MathBlock>
+
+Here <Math>{"n(A)"}</Math> is the number of outcomes in the event <Math>{"A"}</Math> and <Math>{"n(S)"}</Math> is the number of outcomes in the sample space <Math>{"S"}</Math>.
+
+Numbers are always in relation to each other. This is something I've heard different people say and I've come across this saying multiple times.
+
+This relation brings us to **Conditional Probability**. Often it is the case that we are interested in knowing the probability of 
+an event <Math>{"A"}</Math> given that another event <Math>{"B"}</Math> has already occurred.
+
+There is a general formula for conditional probability given by:
+<MathBlock>{"P(A|B) = \\frac{P(A \\cap B)}{P(B)}"}</MathBlock>
+
+But conditional probability in the context of Data Science and Data interviews relates to the use of Bayes' Theorem.
+
+Before we understand the Bayes' Theorem, just know that this very Bayes' theorem has led to the development of a whole area of statistics called 
+**Bayesian Statistics**. 
+
+Often statisticians find themselves in a philosophical debate about the nature of probability: **Frequentist** and **Bayesian** statistics. 
+
+Without too much nuance and detail, Frequentist statistics models probability by the frequency of an event occurring in a large number of trials, while Bayesian statistics models it as 
+as a degree of belief updated as new evidence is obtained. It's a fun topic to dive into in another post.
+
+## Prior Beliefs and its role in Bayes' Theorem
+
+The crux of Bayes' Theorem is the **Prior Beliefs**. In a way Bayesian statistics is more **subjective** than Frequentist statistics. Subjectivity and statistics are not mutually exclusive (in fact, they are often used together). 
+
+Consider the following example: 
+
+<Callout type="warning">
+You flip a coin 10 times and observe 8 heads. A frequentist would say the probability of heads is 0.8 (8/10).
+But wait... don't we know that a fair coin has a probability of 0.5 for heads?
+</Callout>
+
+This is where Bayesian thinking shines. Instead of just using the observed data (8 heads out of 10), we can incorporate our **prior knowledge** that coins are typically fair. 
+This prior belief of <Math>P(heads) = 0.5</Math> helps us make more reasonable predictions.
+
+It provides a formal framework to combine:
+- What we already know
+- What we observe
+- To make better predictions
+
+There is a clear benefit and shortcoming to this approach. 
+
+**Benefit**: When dealing wiht a lack of data, instead of using the low amount of data to derive all the insights, we can factor-in commonly seen patterns from similar events
+to make for informed decisions. 
+
+**Shortcoming**: The prior beliefs are not always correct and are hard to formulate. In our example, if our coin were truly not fair and we assume it to be fair, the only way
+we would find out that it is not fair is by running a long experiment. There is almost no way to know if the coin was actually fair or not. 
+
+We have to make assumptions at some level, and the there are always trade-offs for every approach being taken. 
+
+With that said, let's dive into Bayes' Theorem.
+
+## Bayes' Theorem
+
+Bayes' Theorem can be written as follows:
+<MathBlock>{"P(A|B) = \\frac{P(B|A)P(A)}{P(B)}"}</MathBlock>
+
+<Math>{"P(A)"}</Math> is known as the **Prior**, <Math>{"P(B|A)"}</Math> is known as the **Likelihood**, and <Math>{"P(A|B)"}</Math> is known as the **Posterior**.
+
+The formula for Bayesian statistics is: 
+<Callout>
+Prior + Likelihood = Posterior (Not literally)
+</Callout>
+
+Let's break this down with our coin flip example:
+- **Prior** (<Math>{"P(A)"}</Math>): Our belief before seeing any data. We believe the coin is fair, so <Math>{"P(heads) = 0.5"}</Math>
+- **Likelihood** (<Math>{"P(B|A)"}</Math>): The probability of seeing our data (8 heads in 10 flips) if our belief is true
+- **Posterior** (<Math>{"P(A|B)"}</Math>): Our updated belief after seeing the data
+
+This process is used everywhere in modern machine learning and data science:
+- **Spam Detection**: Prior (typical spam rate) + Likelihood (word patterns) = Posterior (probability this email is spam)
+- **Medical Diagnosis**: Prior (disease prevalence) + Likelihood (test accuracy) = Posterior (probability patient has disease)
+- **Recommendation Systems**: Prior (average user preferences) + Likelihood (user's clicks) = Posterior (probability user will like item)
+
+Finding out these Likelihood is a whole different ball game and a topic for another post. While the idea of Likelihood is simple, finding the right Likelihood 
+is and integrating huge computational challenge and the main focus of Bayesian Statistics. 
+
+There are various algorithms that physicists and statisticians have developed 
+to find these Likelihoods. Some of the most common ones are:
+- Maximum Likelihood Estimation (MLE) - finding parameters that maximize the probability of observed data
+- Variational Inference (VI) - approximating complex posterior distributions
+- Markov Chain Monte Carlo (MCMC) - sampling from probability distributions
+
+<Callout type="default">
+These methods are crucial in modern machine learning, especially in:
+- Deep Learning (Variational Autoencoders)
+- Natural Language Processing (LDA Topic Models)
+- Reinforcement Learning (Bayesian Policy Gradient)
+</Callout>
+
+In an interview setting, a strong hint that the Bayes' Theorem is being asked is:
+<Callout type="warning">
+    Find the probability that some event occured **"given that"** some other event has already occured
+</Callout>
+
+Bayes' Theorem is also a fundamental concept in Machine Learning, where, frequently, we are interested in finding the best conditional distribution of a variable given
+the data that is available. 
+
+Thanks for reading!
+
+Follow for more and feel free to contact me!

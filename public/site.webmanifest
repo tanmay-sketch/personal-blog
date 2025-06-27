@@ -1,0 +1,20 @@
+{
+    "name": "Tanmay's Blog",
+    "short_name": "Blog",
+    "description": "Data Science, Machine Learning, and AI Blog",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/apple-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#030711",
+    "background_color": "#030711",
+    "display": "standalone"
+} 

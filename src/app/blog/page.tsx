@@ -2,6 +2,12 @@ import { posts } from "#site/content";
 import { PostItem } from "@/components/post-item";
 import { QueryPagination } from "@/components/query-pagination";
 import { sortPosts } from "@/lib/utils";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Unstructured Blog Posts",
+    description: "Blog posts about data science, machine learning, and AI",
+};
 
 const POSTS_PER_PAGE = 5;
 

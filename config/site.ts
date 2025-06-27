@@ -6,8 +6,12 @@ export const siteConfig = {
     links: {
         github: "https://github.com/tanmay-sketch",
         linkedin: "https://linkedin.com/in/tanmay-grandhisiri/",
-        personalSite: "https://tanmaygrandhisiri.com"
+        personalSite: "https://tanmaygrandhisiri.com",
+        twitter: "https://twitter.com/tanmaygs"
     },
+    social: {
+        twitter: "@tanmaygs" // Replace with your actual Twitter handle
+    }
 };
 
 export type SiteConfig = typeof siteConfig;

@@ -1,8 +1,14 @@
 import { Callout } from "@/components/callout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BriefcaseBusiness, User } from "lucide-react";
+import { Metadata } from "next";
 
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "About Me",
+    description: "Information about me",
+};
 
 export default async function AboutPage() {
     return (

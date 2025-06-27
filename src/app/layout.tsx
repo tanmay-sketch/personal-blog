@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Providers } from "@/components/providers";
 import { siteConfig } from "../../config/site";
 import { SiteFooter } from "@/components/site-footer";
+import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body
         className={cn("min-h-screen bg-background font-sans antialiased", inter.variable)}
       >
+        <Analytics />
         <Providers>
           <div className="relative flex min-h-dvh flex-col bg-background">
             <SiteHeader />

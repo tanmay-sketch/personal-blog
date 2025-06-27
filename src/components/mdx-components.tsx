@@ -8,8 +8,17 @@ const useMDXComponent = (code: string) => {
 };
 
 const components = {
-    Image,
-    Callout
+    Callout,
+    // Add custom img component for markdown image syntax
+    img: ({src, alt}: {src: string; alt?: string}) => (
+        <Image 
+            src={src} 
+            alt={alt || ''} 
+            width={800} 
+            height={400} 
+            className="my-8 rounded-md"
+        />
+    )
 }
 
 interface MdxProps {

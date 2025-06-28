@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <section className="min-h-[100vh] flex items-center justify-center">
-        <div className="container flex h-full max-w-screen-2xl items-center justify-center">
+        <div className="container flex h-full max-w-screen-2xl items-center justify-center mx-auto">
           <div className="flex max-w-[64rem] flex-col items-center gap-4 text-center px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-7xl font-bold text-balance">
               Welcome to my blog!
@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </section>
       <section className="py-12 lg:py-16">
-        <div className="container flex h-full max-w-screen-2xl items-center justify-center">
+        <div className="container flex h-full max-w-screen-2xl items-center justify-center mx-auto">
           <div className="flex max-w-4xl w-full flex-col space-y-6 px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center">Latest Posts</h2>
             <ul className="flex flex-col">

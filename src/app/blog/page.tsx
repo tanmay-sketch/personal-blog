@@ -30,7 +30,7 @@ export default async function BlogPage( { searchParams }: BlogPageProps ) {
 
     return (
         <section className="py-4 lg:py-10">
-            <div className="container flex h-full max-w-screen-2xl items-center justify-center">
+            <div className="container flex h-full max-w-screen-2xl items-center justify-center mx-auto">
                 <div className="flex max-w-4xl w-full flex-col space-y-4 px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col items-start gap-2 md:flex-row md:justify-between md:gap-8">
                         <div className="flex-1 space-y-2">

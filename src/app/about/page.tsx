@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default async function AboutPage() {
     return (
         <section className="py-12 lg:py-16">
-            <div className="container flex h-full max-w-screen-2xl items-center justify-center">
+            <div className="container flex h-full max-w-screen-2xl items-center justify-center mx-auto">
                 <div className="flex max-w-4xl w-full flex-col space-y-6 px-4 sm:px-6 lg:px-8">
                     <Avatar className="w-20 h-20">
                         <AvatarImage src="/profilepic.jpg" alt="Tanmay Grandhisiri" />

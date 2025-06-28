@@ -1,0 +1,154 @@
+---
+title: Law of Total Probability and Counting
+description: Why the concept of counting and law of total probability is important?
+date: 2025-06-29
+published: true
+---
+
+![Law of Total Probability and Counting](/blog/totalprobandcounting/lawoftotalprob.webp)
+
+This blog post focuses on the fundamental concepts of counting and the law of total probability. The **Law of Total Probability**
+is particularly important by considering all possible scenarios or "partitions" that could lead to an event taking place. 
+**Counting** on the other hand is another concept (asked in a lot of interviews) allows us to assess various probabilites that involve
+counting procedures.
+
+## Law of Total Probability
+
+Intuition: Imagine you are a trying to calculate the probability of an NBA player scoring a basket. A simple way to tackle this
+problem is to divide scoring a basket into free throws, 2-pointers and 3-pointers. We divided the 3 sub-types or events, now we calculate
+the probability of each sub-type and add them up. In the standard law of total probability, the events have to be **disjoint**. A player
+cannot shoot a 2-pointer and a 3-pointer at the same time.
+
+<Callout>
+    Assume we have several disjoint events within B having accured we can break down the probability of an event A as follows:
+    <Math>
+        {"P(A) = \\sum_{i=1}^{n} P(A | B_i)P(B_i)"}
+    </Math>
+    where <Math>{"B_1, B_2, ..., B_n"}</Math> are disjoint events.
+</Callout>
+
+The probability of an event A occuring given that event B has occured is denoted as <Math>{"P(A | B)"}</Math>. This is also known as conditional 
+probability and is an extension of the Bayes' theorem. Checkout my blog post on <a href="https://blog.tanmaygrandhisiri.com/blog/probability" target="_blank" rel="noopener noreferrer">Conditional Probability and Bayes' Theorem</a> 
+for more details.
+
+In our example, let the events be:
+- <Math>{"A"}</Math> = Scoring a basket
+- <Math>{"B_1"}</Math> = Scoring a free throw 
+- <Math>{"B_2"}</Math> = Scoring a 2-pointer
+- <Math>{"B_3"}</Math> = Scoring a 3-pointer
+
+The probability of scoring a basket is given by:
+<Math>
+    {"P(A) = P(A | B_1)P(B_1) + P(A | B_2)P(B_2) + P(A | B_3)P(B_3)"}
+</Math>
+
+Where:
+- <Math>{"P(A | B_1)"}</Math> is the probability of scoring given that it's a free throw attempt (free throw percentage)
+- <Math>{"P(A | B_2)"}</Math> is the probability of scoring given that it's a 2-point attempt (2-point field goal percentage)
+- <Math>{"P(A | B_3)"}</Math> is the probability of scoring given that it's a 3-point attempt (3-point field goal percentage)
+- <Math>{"P(B_1)"}</Math> is the probability of taking a free throw
+- <Math>{"P(B_2)"}</Math> is the probability of taking a 2-point shot
+- <Math>{"P(B_3)"}</Math> is the probability of taking a 3-point shot
+
+Let's take Stephen Curry's free throw percentage, 2 point field goal percentage and 3 point field goal percentage along with free throw attempts, 2 point attempts and 3 point attempts 
+from the 2024-2025 NBA season. 
+
+| Shot Type | Attempts per Game | Percentage | <Math>{"P(B_i)"}</Math> | <Math>{"P(A\|B_i)"}</Math> |
+|-----------|------------------|------------|---------|------------|
+| Free Throw | 4.3 | 93.3% | 0.194 | 0.933 |
+| 2-Point | 6.7 | 44.8% | 0.302 | 0.448 |
+| 3-Point | 11.2 | 39.7% | 0.504 | 0.397 |
+
+Note: <Math>{"P(B_i)"}</Math> is calculated by dividing each attempt type by total attempts (4.3 + 6.7 + 11.2 = 22.2)
+
+Now we can calculate the overall probability of Steph Curry scoring on any given shot attempt:
+
+<Math>
+    {"P(A) = (0.933 × 0.194) + (0.448 × 0.302) + (0.397 × 0.504) = 0.181 + 0.135 + 0.200 = 0.516"}
+</Math>
+
+This means Steph Curry has a 51.6% chance of scoring on any given shot attempt, accounting for all types of shots and their frequencies.
+
+While this doesn't account for the type of shot being taken (because layups are not something curry would miss), it's an example to 
+understand the concept of the law of total probability.
+
+## Counting
+
+Counting is something we all learn from a very young age. We learn to count objects, numbers etc. In probability, counting shows up in two main ways:
+
+<Callout>
+- If order of selection matters, we use permutations
+- If order of selection does not matter, we use combinations
+</Callout>
+
+In interviews, counting can be asked in one form or another. "How many ways can 5 people be seated in a row of 5 chairs?"
+
+Permutations more simply put would be the arrangement of things where order matters. 
+
+As a basic principle, the number of ways you can arrange <Math>{"n"}</Math> objects is <Math>{"n!"}</Math>.
+
+My 3 favorite basketball players are Steph Curry, Lebron James, and Giannis Antetokounmpo. Let's say they're siting 
+on stage having a podcast together. We can arrange them in 3! = 6 ways. 
+
+- (Steph, Lebron, Giannis)
+- (Steph, Giannis, Lebron)
+- (Lebron, Steph, Giannis)
+- (Lebron, Giannis, Steph)
+- (Giannis, Steph, Lebron)
+- (Giannis, Lebron, Steph)
+
+### Permutations
+
+The formula for permutations where you are selecting <Math>{"k"}</Math> from <Math>{"n"}</Math> objects is:
+<Callout>
+    <Math>
+        {"P(n, k) = n * (n-1) * (n-2) * ... * (n-k+1) = \\frac{n!}{(n-k)!}"}
+    </Math>
+</Callout>
+
+### Combinations
+
+Combinations on the other hand would be selecting <Math>{"k"}</Math> from <Math>{"n"}</Math> objects 
+where order does not matter.
+
+The formula for combinations is:
+<Callout>
+    <Math>
+        {"C(n, k) = \\frac{n!}{k!(n-k)!}"}
+    </Math>
+</Callout>
+
+Let's use the same basketball players example but for combinations. If I want to pick 2 players out of the 3 
+(Steph, Lebron, Giannis) to play a 2v1 game, the order doesn't matter - picking (Steph, Lebron) is the same as 
+picking (Lebron, Steph). Using the combination formula:
+
+<Math>
+    {"C(3, 2) = \\frac{3!}{2!(3-2)!} = \\frac{6}{2 * 1} = 3"}
+</Math>
+
+The three possible combinations are:
+- Steph and Lebron
+- Steph and Giannis
+- Lebron and Giannis
+
+### Permutations vs Combinations Example
+
+Again since basketball is my favorite sport let's consider a basketball tournament where 10 teams participate. 
+Let's solve two different scenarios:
+
+1. **Permutation**: Arranging the top 3 teams for Gold, Silver, and Bronze medals
+   - Order matters (1st, 2nd, 3rd are different)
+   - <Math>{"P(10, 3) = \\frac{10!}{(10-3)!} = 720"}</Math> possible arrangements
+
+2. **Combination**: Selecting 3 teams for a special exhibition match
+   - Order doesn't matter (just need any 3 teams)
+   - <Math>{"C(10, 3) = \\frac{10!}{3!(10-3)!} = 120"}</Math> possible selections
+
+
+The Law of Total Probability helps us break down complex probability problems into simpler parts, as we saw with the basketball scoring example. 
+Understanding when to use permutations vs combinations is crucial for solving counting problems - remember that permutations care about order 
+(like ranking or arranging), while combinations don't (like selecting or choosing).
+
+Thanks for reading!
+
+Follow for more and feel free to contact me!

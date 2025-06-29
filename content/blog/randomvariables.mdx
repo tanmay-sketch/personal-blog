@@ -1,0 +1,61 @@
+---
+title: Random variables
+description: Building blocks of probability distributions
+date: 2025-06-29
+published: true
+---
+
+![Random Variables](/blog/randomvariables/randomvariables.webp)
+
+A random variable is a function that maps outcomes of a probability distribution to real numbers. These random 
+variables can either be discrete (countable range) or continuous (uncountable range).
+
+The probability distribution associated with a discrete random variable is a probability mass function (PMF) and
+the probability distribution associated with a continuous random variable is a probability density function (PDF). 
+
+Both PMF and PDF can be represented by the following function of x where x is the random variable: <Math>{"f_X(x)"}</Math>
+
+In the discrete case, <Math>{"X"}</Math> can take on particular values with a probability, whereas, in the continuous
+case the probability of a particular value of <Math>{"x"}</Math> is not measurable. A "probability mass" around <Math>{"x"}</Math>
+per unit length around <Math>{"x"}</Math> is measurable. This would mean the probability around the region <Math>{"[x, x + dx]"}</Math>
+can be measured in the continuous case.
+
+Probabilities must either sum up to (in the discrete case) or integrate to (in the continuous case) **1**. 
+
+<Callout>
+    Discrete: <Math>{"\\sum_{x} f_X(x) = 1"}</Math>
+
+    Continuous: <Math>{"\\int_{-\\infty}^{\\infty} f_X(x) dx = 1"}</Math>
+</Callout>
+
+PMF or PDF are often not that useful in practice. We often want to know the probability of a random variable taking on a particular value or
+a range of values. This is where the cumulative distribution function (CDF) comes in. CDF is the probability that the random variable is less than 
+or equal to a particular value. In simple terms, it accumulates all the probabilities up to and including the value of <Math>{"x"}</Math> until the value of <Math>{"x"}</Math>.
+
+So, the CDF of both PMF and PDF are: <Math>{"F_X(x) = P(X \\leq x)"}</Math>
+
+<Callout>
+    Discrete CDF: <Math>{"F_X(x) = \\sum_{k \\leq x} f_X(k)"}</Math>
+
+    Continuous CDF is: <Math>{"F_X(x) = \\int_{-\\infty}^{x} f_X(y) dy"}</Math> 
+</Callout>
+
+Thus CDF is a non-negative, monotonically increasing (never decreases) function that takes the sum of PMFs for the discrete case and the integral of PDFs 
+for the continuous case.
+
+This introduction to random variables covers the building blocks that lead to common distributions like normal, binomial, and Poisson. From these concepts, 
+we can derive moments, expectation, variance, and correlation - forming the basis of probability theory for statistical inference.
+
+Many people think probability and statistics are the same, but they're distinct. Probability studies random phenomena and their behavior, while statistics 
+analyzes how data is collected and interpreted. Probability provides the foundation for statistics.
+
+Consider a football player taking penalties:
+
+- **Probability asks:** If I ask a player to take a penalty 100 times, what's the chance he scores exactly 60 times? 
+
+- **Statistics asks:** If I ask a player to take a penalty 100 times and he scores 60 times, is he a good penalty taker?
+
+Probability models random phenomena, while statistics makes inferences about populations from sample data.
+
+Thanks for reading!
+Follow for more and feel free to contact me!

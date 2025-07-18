@@ -1,0 +1,83 @@
+---
+title: Survivorship Bias
+description: What is survivorship bias and how it affects data analysis and life in general?
+date: 2025-07-18
+published: true
+---
+
+![Survivorship Bias](/blog/surv_bias/surv_bias.webp)
+
+tldr; Survivorship bias is focusing on the things left instead of finding out why others didn't make it.
+It should be avoided as much as possible in both data analysis and life in general. 
+
+Survivorship bias comes is the idea of selecting only the 'survivors' - those that outlived/outperformed others in a given situation.
+
+This can be the people, companies, machines, markets etc. Whatever it is that we are looking at, we often only tend to look at the survivors
+without getting a sense of the entire perspective.
+
+By far the most famous example of **Survivorship Bias** originates from World War II when the US was trying to prevent planes from being shot down. 
+Mathematician Abraham Wald was given a task of the best ways to protect airplanes from being shot down. Inital plans of protection were **equipping the
+plane with armor plates** but this would make the plane too heavy or not fully protect the plane.
+
+Quickly, Wald realized the military had fallen into the trap of **survivorship bias** by looking at the planes that returned from war and not 
+considering the planes that were actually shot down. It might seem obvious that why wouldn't they look at the planes that were shot down? Is it because 
+they couldn't find the planes that were shot down? It's because they didn't know what they were losing out on.
+
+By observing the most damaged parts and bullet holes from planes that returned from war the military would reinforce those areas with more protection. This
+turned out to be the wings, tail gunner, and center of the body. However, what they were looking at was precisely the opposite: the parts that could sustain the hits
+and can keep the plane flying with damage.
+
+Once you are familiar with the concept of survivorship bias, you start to see it everywhere. 
+- A gym that shows you the best results of the people that have been there for a long time but not the ones that quit or had health issues.
+- School that shows you the top achievers but not the ones that went through struggle due to family issues or toxic environment.
+
+<Callout>Social media is the biggest and most obvious example of survivorship bias. You look at the people that are successful and think there's only one successful path for the type of people you follow.</Callout>
+
+## Survivorship Bias in Sports
+
+Survivorship bias is a common problem in data analysis. It is a form of a **selection bias** where you only look at a subgroup of the data and not the entire population.
+Before any sort of analysis: hypothesis testing, A/B testing, regression analysis etc. It is important to consider how are you selecting the data? where does it come from?
+what is missing?
+
+Because I like sports, let's take an example from MLB that I found interesting. Aging is measured by something called the "Aging curves" in baseball. This estimates
+the growth and decline of players' performance over time. There is not a single curve for all players because different players have different skills resulting in multiple
+curves. The example below is from another blog by Baseball Prospectus. (Link at the end of the blog)
+
+One challenge from developing these aging curves is sometimes survivorship bias is involved where it is rarely possible to see the entire population of players on the field.
+
+OPS or On-base plus slugging is a statistic in MLB that measures the sum of on base percentage (how often a batter reaches a base safely) and slugging percentage 
+(total bases a player gets per-bat). OPS although is not a perfect statistic does a good job of measuring productivity of a player.
+
+Analysts tried to measure performance output of players as they age by looking at stats like **OPS** for players in the ages between 31-35 commonly when they start to observe
+a decline in performance. Because many studies only limit themselves to the players who are **still active** they are missing out on the players who dropped out (injury, declining skills,
+being cut).
+
+As a result the average OPS of players in the ages between 31-35 is **overstated**. To tackle the people over at Baseball Prospectus employed a simulation based approach where 
+they simulate different performance levels and gaps between survivors and dropouts.
+
+The following dataset was created to estimate the mean OPS of players in the ages between 31-35. A dataset that consisted of 80% survivors and 20% dropouts.
+
+<Callout>
+- 2000 performances drawn from a normal distribution with a mean OPS of 0.740 and standard deviation of 0.08 (major league average and standard deviation)
+- 500 performances drawn from the same distribution with a penalization subtracted from the initial OPS. This is **dropout delta**. (Varied between 40 pts and 300 pts during simulations)
+- Each raw performance is randomly assigned an age between 31-35.
+</Callout>
+
+This simulation was a **Monte carlo simulation** to estimate the mean OPS of players in the ages between 31-35.
+
+After running the simulation and obtaining the results, the key takeaway is that even when you assign large penalties to "dropout" players and increase the aging effect, there is essentially no 
+meaningful survivor bias in the estimated aging curve for MLB players when using normally distributed performance data. In other words, the performance trends for players who survive in the league 
+look almost the same as if you had full data for everyone—including those who dropped out early-when modeling this way.
+
+You can check out the blog for more details (mentioned at the end of the blog).
+
+In a way while writing this blog, I'm going through survivorship bias because I'm looking mostly able to find the blogs that explain survivorship bias and its problems but not the ones
+that show examples to tackle it. 
+
+This was a long one but I hope you enjoyed learning about survivorship bias and how it can affect us in every facet of life.
+
+Thanks for reading!
+Follow for more and feel free to contact me!
+
+Links:
+- [An Approach to Survivorship in Baseball](https://www.baseballprospectus.com/news/article/59491/an-approach-to-survivor-bias-in-baseball/)

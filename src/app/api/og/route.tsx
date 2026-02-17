@@ -11,12 +11,20 @@ export async function GET(req: NextRequest) {
 
         const { searchParams } = req.nextUrl;
         const title = searchParams.get("title");
+        const description = searchParams.get("description");
+        const date = searchParams.get("date");
 
         if (!title) {
             return new Response("Title is required", { status: 500 });
         }
 
-        const heading = title.length > 140 ? `${title.substring(0,140)}...` : title;
+        const heading = title.length > 70 ? `${title.substring(0, 70)}...` : title;
+        const subtext = description
+            ? description.length > 110
+                ? `${description.substring(0, 110)}...`
+                : description
+            : null;
+        const titleFontSize = heading.length > 45 ? 60 : 72;
 
         return new ImageResponse((
             <div
@@ -24,102 +32,149 @@ export async function GET(req: NextRequest) {
                     height: '100%',
                     width: '100%',
                     display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    justifyContent: 'space-between',
-                    background: 'linear-gradient(to bottom right, #030711, #0F1629)',
-                    padding: '80px',
+                    background: '#060B18',
                     position: 'relative',
                 }}
             >
-                {/* Decorative element */}
+                {/* Background glow — top right */}
                 <div style={{
                     position: 'absolute',
-                    top: '0',
-                    right: '0',
-                    width: '300px',
-                    height: '300px',
-                    background: 'radial-gradient(circle at center, #1E293B 0%, transparent 70%)',
-                    opacity: '0.1',
-                    borderRadius: '50%',
-                    transform: 'translate(30%, -30%)',
+                    top: '-120px',
+                    right: '-80px',
+                    width: '580px',
+                    height: '580px',
+                    background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)',
+                    display: 'flex',
                 }} />
+
+                {/* Background glow — bottom left */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-80px',
+                    left: '-60px',
+                    width: '420px',
+                    height: '420px',
+                    background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)',
+                    display: 'flex',
+                }} />
+
+                {/* Left accent bar */}
+                <div style={{
+                    position: 'absolute',
+                    left: '0',
+                    top: '0',
+                    width: '6px',
+                    height: '100%',
+                    background: 'linear-gradient(to bottom, #818CF8, #3B82F6)',
+                    display: 'flex',
+                }} />
+
+                {/* Main content */}
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '40px',
+                    justifyContent: 'space-between',
+                    padding: '68px 80px 68px 96px',
                     width: '100%',
+                    height: '100%',
                     position: 'relative',
-                    zIndex: '1',
+                    zIndex: 1,
                 }}>
+                    {/* Header */}
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
+                        gap: '14px',
                     }}>
-                        <svg 
-                            width="40"
-                            height="40"
-                            viewBox="0 0 24 24" 
-                            fill="none" 
-                            stroke="#64748B"
-                            strokeWidth="2" 
-                            strokeLinecap="round" 
+                        <svg
+                            width="34"
+                            height="34"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#818CF8"
+                            strokeWidth="2"
+                            strokeLinecap="round"
                             strokeLinejoin="round"
-                            style={{ marginRight: '24px' }}
                         >
                             <path d="M4 11a9 9 0 0 1 9 9" />
                             <path d="M4 4a16 16 0 0 1 16 16" />
                             <circle cx="5" cy="19" r="1" />
                         </svg>
-                        <div
-                            style={{
-                                display: 'flex',
-                                fontSize: '32px',
-                                fontWeight: 700,
-                                color: '#64748B',
-                            }}
-                        >
+                        <div style={{
+                            display: 'flex',
+                            fontSize: '26px',
+                            fontWeight: 700,
+                            color: '#94A3B8',
+                            letterSpacing: '-0.01em',
+                        }}>
                             Tanmay&apos;s Blog
                         </div>
                     </div>
-                    <div
-                        style={{
+
+                    {/* Title + description */}
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '22px',
+                    }}>
+                        <div style={{
                             display: 'flex',
-                            fontSize: '72px',
+                            fontSize: `${titleFontSize}px`,
                             fontWeight: 700,
                             color: '#FFFFFF',
                             lineHeight: 1.2,
-                            whiteSpace: 'pre-wrap',
-                            maxWidth: '90%',
-                            textShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                        }}
-                    >
-                        {heading}
+                            letterSpacing: '-0.025em',
+                            maxWidth: '95%',
+                        }}>
+                            {heading}
+                        </div>
+                        {subtext && (
+                            <div style={{
+                                display: 'flex',
+                                fontSize: '28px',
+                                fontWeight: 700,
+                                color: '#64748B',
+                                lineHeight: 1.45,
+                                maxWidth: '88%',
+                            }}>
+                                {subtext}
+                            </div>
+                        )}
                     </div>
-                    <div
-                        style={{
+
+                    {/* Footer */}
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        width: '100%',
+                    }}>
+                        <div style={{
                             display: 'flex',
-                            fontSize: '32px',
+                            alignItems: 'center',
+                            gap: '14px',
+                            fontSize: '22px',
                             fontWeight: 700,
-                            color: '#64748B',
-                            letterSpacing: '-0.02em',
-                        }}
-                    >
-                        Data Science • Machine Learning • AI • Sports
+                            color: '#475569',
+                        }}>
+                            <span>Tanmay Grandhisiri</span>
+                            {date && (
+                                <>
+                                    <span style={{ color: '#1E293B' }}>•</span>
+                                    <span>{date}</span>
+                                </>
+                            )}
+                        </div>
+                        <div style={{
+                            display: 'flex',
+                            fontSize: '20px',
+                            fontWeight: 700,
+                            color: '#6366F1',
+                            letterSpacing: '-0.01em',
+                        }}>
+                            blog.tanmaygrandhisiri.com
+                        </div>
                     </div>
-                </div>
-                <div style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                    alignItems: 'center',
-                    gap: '16px',
-                    fontSize: '24px',
-                    color: '#64748B',
-                    position: 'relative',
-                    zIndex: '1',
-                }}>
-                    www.tanmaygrandhisiri.com
                 </div>
             </div>
         ), {
@@ -132,7 +187,7 @@ export async function GET(req: NextRequest) {
                 weight: 700
             }]
         });
-        
+
     } catch (error: unknown) {
         console.error("OG Image generation failed:", error instanceof Error ? error.message : String(error));
         return new Response("Failed to generate the image", { status: 500 });

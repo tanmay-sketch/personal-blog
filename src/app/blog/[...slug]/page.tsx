@@ -24,6 +24,8 @@ export async function generateMetadata({params}: PostPageProps) : Promise<Metada
 
     const ogSearchParams = new URLSearchParams();
     ogSearchParams.set("title", post.title);
+    if (post.description) ogSearchParams.set("description", post.description);
+    if (post.date) ogSearchParams.set("date", new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }));
 
     const ogImage = `/api/og?${ogSearchParams.toString()}`;
 

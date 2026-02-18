@@ -167,12 +167,17 @@ export async function GET(req: NextRequest) {
                         </div>
                         <div style={{
                             display: 'flex',
-                            fontSize: '20px',
+                            alignItems: 'center',
+                            gap: '10px',
+                            background: 'linear-gradient(to right, #9333EA, #6366F1)',
+                            borderRadius: '50px',
+                            padding: '14px 32px',
+                            fontSize: '22px',
                             fontWeight: 700,
-                            color: '#6366F1',
+                            color: '#FFFFFF',
                             letterSpacing: '-0.01em',
                         }}>
-                            blog.tanmaygrandhisiri.com
+                            Read Blog →
                         </div>
                     </div>
                 </div>

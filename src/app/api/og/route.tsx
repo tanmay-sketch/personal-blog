@@ -32,40 +32,18 @@ export async function GET(req: NextRequest) {
                     height: '100%',
                     width: '100%',
                     display: 'flex',
-                    background: '#060B18',
+                    background: 'linear-gradient(160deg, #0E0E0E 0%, #111111 60%, #0A0A0A 100%)',
                     position: 'relative',
                 }}
             >
-                {/* Background glow — top right */}
+                {/* Subtle top accent line */}
                 <div style={{
                     position: 'absolute',
-                    top: '-120px',
-                    right: '-80px',
-                    width: '580px',
-                    height: '580px',
-                    background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)',
-                    display: 'flex',
-                }} />
-
-                {/* Background glow — bottom left */}
-                <div style={{
-                    position: 'absolute',
-                    bottom: '-80px',
-                    left: '-60px',
-                    width: '420px',
-                    height: '420px',
-                    background: 'radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)',
-                    display: 'flex',
-                }} />
-
-                {/* Left accent bar */}
-                <div style={{
-                    position: 'absolute',
-                    left: '0',
                     top: '0',
-                    width: '6px',
-                    height: '100%',
-                    background: 'linear-gradient(to bottom, #818CF8, #3B82F6)',
+                    left: '80px',
+                    right: '80px',
+                    height: '1px',
+                    background: 'linear-gradient(to right, transparent, rgba(99,102,241,0.4), transparent)',
                     display: 'flex',
                 }} />
 
@@ -74,7 +52,7 @@ export async function GET(req: NextRequest) {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    padding: '68px 80px 68px 96px',
+                    padding: '72px 80px',
                     width: '100%',
                     height: '100%',
                     position: 'relative',
@@ -84,30 +62,23 @@ export async function GET(req: NextRequest) {
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '14px',
+                        gap: '10px',
                     }}>
-                        <svg
-                            width="34"
-                            height="34"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="#818CF8"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M4 11a9 9 0 0 1 9 9" />
-                            <path d="M4 4a16 16 0 0 1 16 16" />
-                            <circle cx="5" cy="19" r="1" />
-                        </svg>
+                        <div style={{
+                            width: '6px',
+                            height: '6px',
+                            borderRadius: '50%',
+                            background: '#6366F1',
+                            display: 'flex',
+                        }} />
                         <div style={{
                             display: 'flex',
-                            fontSize: '26px',
+                            fontSize: '22px',
                             fontWeight: 700,
-                            color: '#94A3B8',
-                            letterSpacing: '-0.01em',
+                            color: '#3A3A3A',
+                            letterSpacing: '0.02em',
                         }}>
-                            Tanmay&apos;s Blog
+                            TANMAY&apos;S BLOG
                         </div>
                     </div>
 
@@ -115,27 +86,27 @@ export async function GET(req: NextRequest) {
                     <div style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '22px',
+                        gap: '20px',
                     }}>
                         <div style={{
                             display: 'flex',
                             fontSize: `${titleFontSize}px`,
                             fontWeight: 700,
-                            color: '#FFFFFF',
-                            lineHeight: 1.2,
-                            letterSpacing: '-0.025em',
-                            maxWidth: '95%',
+                            color: '#F0F0F0',
+                            lineHeight: 1.15,
+                            letterSpacing: '-0.03em',
+                            maxWidth: '90%',
                         }}>
                             {heading}
                         </div>
                         {subtext && (
                             <div style={{
                                 display: 'flex',
-                                fontSize: '28px',
+                                fontSize: '26px',
                                 fontWeight: 700,
-                                color: '#64748B',
-                                lineHeight: 1.45,
-                                maxWidth: '88%',
+                                color: '#444444',
+                                lineHeight: 1.5,
+                                maxWidth: '82%',
                             }}>
                                 {subtext}
                             </div>
@@ -145,40 +116,19 @@ export async function GET(req: NextRequest) {
                     {/* Footer */}
                     <div style={{
                         display: 'flex',
-                        justifyContent: 'space-between',
                         alignItems: 'center',
-                        width: '100%',
+                        gap: '16px',
+                        fontSize: '20px',
+                        fontWeight: 700,
+                        color: '#2E2E2E',
                     }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '14px',
-                            fontSize: '22px',
-                            fontWeight: 700,
-                            color: '#475569',
-                        }}>
-                            <span>Tanmay Grandhisiri</span>
-                            {date && (
-                                <>
-                                    <span style={{ color: '#1E293B' }}>•</span>
-                                    <span>{date}</span>
-                                </>
-                            )}
-                        </div>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                            background: 'linear-gradient(to right, #9333EA, #6366F1)',
-                            borderRadius: '50px',
-                            padding: '14px 32px',
-                            fontSize: '22px',
-                            fontWeight: 700,
-                            color: '#FFFFFF',
-                            letterSpacing: '-0.01em',
-                        }}>
-                            Read Blog →
-                        </div>
+                        <span>Tanmay Grandhisiri</span>
+                        {date && (
+                            <>
+                                <span style={{ color: '#1E1E1E' }}>·</span>
+                                <span>{date}</span>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

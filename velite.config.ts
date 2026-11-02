@@ -34,7 +34,10 @@ export default defineConfig({
     mdx: {
         rehypePlugins: [
             rehypeSlug,
-            [rehypePrettyCode, { theme: "github-dark" }],
+            [rehypePrettyCode, {
+                theme: { light: "github-light", dark: "github-dark" },
+                defaultLang: { block: "plaintext" },
+            }],
             [rehypeAutolinkHeadings, { behavior: "wrap", properties: { className: ["subheading-anchor"], ariaLabel: "Link to section"} }],
         ],
         remarkPlugins: [],

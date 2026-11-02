@@ -7,10 +7,10 @@ export const siteConfig = {
         github: "https://github.com/tanmay-sketch",
         linkedin: "https://linkedin.com/in/tanmay-grandhisiri/",
         personalSite: "https://tanmaygrandhisiri.com",
-        twitter: "https://twitter.com/tanmaygs"
+        twitter: "https://twitter.com/tanmay_gran"
     },
     social: {
-        twitter: "@tanmaygs" // Replace with your actual Twitter handle
+        twitter: "@tanmay_gran" // Replace with your actual Twitter handle
     }
 };
 

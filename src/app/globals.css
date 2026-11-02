@@ -8,8 +8,30 @@
 /* ---------------------- */
 @layer utilities {
   .mdx-scope {
+    code::before,
+    code::after {
+      content: none;
+    }
+
     [data-rehype-pretty-code-figure] pre {
       @apply px-0;
+      color: var(--shiki-light);
+      background-color: var(--muted);
+      box-shadow: inset 0 0 0 1px var(--border);
+
+      @variant dark {
+        color: var(--shiki-dark);
+        background-color: var(--shiki-dark-bg);
+        box-shadow: none;
+      }
+    }
+
+    [data-rehype-pretty-code-figure] pre span {
+      color: var(--shiki-light, inherit);
+
+      @variant dark {
+        color: var(--shiki-dark, inherit);
+      }
     }
     
     [data-rehype-pretty-code-figure] code {
